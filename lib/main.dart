@@ -1,10 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'firebase_options.dart';  // Import this
+import 'package:bloodline/firebase_options.dart';  // Import this
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(
+ name: "dev project",
+ options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
