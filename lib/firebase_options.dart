@@ -59,4 +59,5 @@ class DefaultFirebaseOptions {
     projectId: 'kavindu-dd582',
     storageBucket: 'kavindu-dd582.firebasestorage.app',
   );
+
 }

@@ -12,7 +12,12 @@
           "package_name": "com.example.bloodline"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1018207717459-i1ao9pn02chfffsoa3843l25gg9aqe7h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAoaVSPaaiN1n-_QFc3F_mqEJK1OoFCE3k"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1018207717459-i1ao9pn02chfffsoa3843l25gg9aqe7h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
