@@ -33,11 +33,11 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: "AIzaSyAoaVSPaaiN1n-_QFc3F_mqEJK1OoFCE3k",
-    appId: "1:1018207717459:android:e8462af92079fa47329ea6",
-    messagingSenderId: "1018207717459",
-    projectId: "kavindu-dd582",
-    storageBucket: "kavindu-dd582.firebasestorage.app",
+    apiKey: 'AIzaSyAoaVSPaaiN1n-_QFc3F_mqEJK1OoFCE3k',
+    appId: '1:1018207717459:android:e8462af92079fa47329ea6',
+    messagingSenderId: '1018207717459',
+    projectId: 'kavindu-dd582',
+    storageBucket: 'kavindu-dd582.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
