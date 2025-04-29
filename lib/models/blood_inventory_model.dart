@@ -32,6 +32,7 @@ class BloodInventoryModel {
   }
 }
 
+//blood type inventory class
 class BloodTypeInventory {
   final int availableUnits;
   final DateTime lastCollected;
