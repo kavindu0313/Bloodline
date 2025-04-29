@@ -43,7 +43,7 @@ class BloodTypeInventory {
     required this.lastCollected,
     required this.expiryDate,
   });
-
+  //constructor for blood type inventory
   factory BloodTypeInventory.fromJson(Map<String, dynamic> json) {
     return BloodTypeInventory(
       availableUnits: json['availableUnits'],
