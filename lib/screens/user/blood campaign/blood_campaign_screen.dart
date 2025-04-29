@@ -53,7 +53,7 @@ class BloodCampaignScreen extends StatelessWidget {
               onDelete: () {
                 Get.dialog(
                   AlertDialog(
-                    title: Text('Delete Campaign'),
+                    title: Text('Delete Campaign'), //Delete Campaign
                     content: Text('Are you sure you want to delete this campaign?'),
                     actions: [
                       TextButton(
