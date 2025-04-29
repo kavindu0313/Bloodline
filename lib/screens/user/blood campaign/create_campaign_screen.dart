@@ -83,7 +83,10 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
       }
     }
   }
-
+ /// Build the UI
+  /// This method builds the UI for the Create Campaign screen.
+  /// It includes a form with fields for the campaign title, description, date, and location.
+  /// It also includes a button to submit the form and create the campaign.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
