@@ -18,6 +18,7 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
   bool _isLoading = false;
 
   // Form controllers
+  /// TextEditingController for each field
   late TextEditingController _titleController;
   late TextEditingController _descriptionController;
   late TextEditingController _locationController;
