@@ -7,6 +7,7 @@ import '../../../models/blood_unit.dart';
 import '../../../utils/blood_type_utils.dart';
 import '../../../mixins/firebase_init_mixin.dart';
 
+//add blood unit form class
 class AddBloodUnitForm extends StatefulWidget {
   const AddBloodUnitForm({super.key});
 
@@ -336,6 +337,7 @@ class _AddBloodUnitFormState extends State<AddBloodUnitForm>
     }
   }
 
+  //dispose method
   @override
   void dispose() {
     _volumeController.dispose();
