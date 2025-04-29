@@ -66,7 +66,7 @@ class HospitalDetailsScreen extends StatelessWidget {
             SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {
-                // Navigate to appointments screen
+                
                 Navigator.push(
                   context,
                   MaterialPageRoute(

@@ -11,9 +11,12 @@ class HospitalService {
     return _firestore
         .collection('hospitals')
         .snapshots()
-        .map((snapshot) => snapshot.docs
-            .map((doc) => Hospital.fromFirestore(doc.data()))
-            .toList());
+        .map(
+          (snapshot) =>
+              snapshot.docs
+                  .map((doc) => Hospital.fromFirestore(doc.data()))
+                  .toList(),
+        );
   }
 
   // Get hospital by ID
@@ -40,10 +43,7 @@ class HospitalService {
 
   // Delete hospital
   Future<void> deleteHospital(String hospitalId) async {
-    await _firestore
-        .collection('hospitals')
-        .doc(hospitalId)
-        .delete();
+    await _firestore.collection('hospitals').doc(hospitalId).delete();
   }
 
   // Appointment Management Methods
@@ -58,23 +58,28 @@ class HospitalService {
     }
   }
 
+  //appointment management methods
   Stream<List<Appointment>> getUserAppointments(String patientId) {
     return _firestore
         .collection('appointments')
         .where('patientId', isEqualTo: patientId)
         .snapshots()
-        .map((snapshot) => snapshot.docs
-            .map((doc) => Appointment.fromFirestore(doc.data()))
-            .toList());
+        .map(
+          (snapshot) =>
+              snapshot.docs
+                  .map((doc) => Appointment.fromFirestore(doc.data()))
+                  .toList(),
+        );
   }
 
   Future<void> updateAppointmentStatus(
-      String appointmentId, String newStatus) async {
+    String appointmentId,
+    String newStatus,
+  ) async {
     try {
-      await _firestore
-          .collection('appointments')
-          .doc(appointmentId)
-          .update({'status': newStatus});
+      await _firestore.collection('appointments').doc(appointmentId).update({
+        'status': newStatus,
+      });
     } catch (e) {
       print('Error updating appointment status: $e');
     }
