@@ -22,6 +22,7 @@ class BloodInventoryModel {
       lastUpdated: (data['lastUpdated'] as Timestamp).toDate(),
     );
   }
+  //from firestore method
 
   Map<String, dynamic> toFirestore() {
     return {
