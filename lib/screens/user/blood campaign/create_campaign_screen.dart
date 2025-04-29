@@ -176,6 +176,8 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
                     SizedBox(height: 24),
 
                     // Submit Button
+                    // This button submits the form and creates the campaign.
+                    // It is disabled while the form is being submitted.
                     ElevatedButton(
                       onPressed: _submitForm,
                       child: Padding(
