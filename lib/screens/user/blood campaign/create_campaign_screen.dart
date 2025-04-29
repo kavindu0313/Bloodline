@@ -52,6 +52,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
       });
 
       try {
+        // Create a new BloodCampaign object
         final campaign = BloodCampaign(
           id: '', // ID will be assigned by Firestore
           title: _titleController.text,
