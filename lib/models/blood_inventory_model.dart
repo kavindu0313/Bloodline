@@ -10,13 +10,14 @@ class BloodInventoryModel {
     required this.inventory,
     required this.lastUpdated,
   });
+  //constructor
 
   factory BloodInventoryModel.fromFirestore(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     return BloodInventoryModel(
       hospitalId: doc.id,
       inventory: (data['inventory'] as Map<String, dynamic>).map(
-        (key, value) => MapEntry(key, BloodTypeInventory.fromJson(value))
+        (key, value) => MapEntry(key, BloodTypeInventory.fromJson(value)),
       ),
       lastUpdated: (data['lastUpdated'] as Timestamp).toDate(),
     );
