@@ -61,7 +61,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
           location: _locationController.text,
           status: 'active',
         );
-
+        //if Campaign created successfully
         await _service.createCampaign(campaign);
         Get.back(result: true);
         Get.snackbar(
@@ -70,6 +70,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
           snackPosition: SnackPosition.BOTTOM,
         );
       } catch (e) {
+        // Handle error
         Get.snackbar(
           'Error',
           'Failed to create campaign',
