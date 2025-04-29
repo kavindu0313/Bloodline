@@ -104,6 +104,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     // Title
+                    // Campaign Title
                     TextFormField(
                       controller: _titleController,
                       decoration: InputDecoration(
@@ -120,7 +121,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
                     ),
                     SizedBox(height: 16),
 
-                    // Description
+                    // Description.
                     TextFormField(
                       controller: _descriptionController,
                       decoration: InputDecoration(
@@ -139,6 +140,8 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
                     SizedBox(height: 16),
 
                     // Date
+                    // Campaign Date
+                    // This field allows the user to select a date for the campaign.
                     InkWell(
                       onTap: () => _selectDate(context),
                       child: InputDecorator(
