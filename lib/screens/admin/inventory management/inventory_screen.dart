@@ -5,6 +5,7 @@ import 'inventory list screen.dart';
 import 'add_blood_unit_screen.dart';
 import '../../../mixins/firebase_init_mixin.dart';
 
+//inventory screen class
 class InventoryScreen extends StatefulWidget {
   const InventoryScreen({super.key});
 
@@ -12,9 +13,11 @@ class InventoryScreen extends StatefulWidget {
   _InventoryScreenState createState() => _InventoryScreenState();
 }
 
-class _InventoryScreenState extends State<InventoryScreen> with FirebaseInitMixin {
+//inventory screen state class
+class _InventoryScreenState extends State<InventoryScreen>
+    with FirebaseInitMixin {
   final FirebaseInventoryService _inventoryService = FirebaseInventoryService();
-
+  //inventory screen state class
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +27,7 @@ class _InventoryScreenState extends State<InventoryScreen> with FirebaseInitMixi
           IconButton(
             icon: Icon(Icons.refresh),
             onPressed: () => _inventoryService.removeExpiredUnits(),
-          )
+          ),
         ],
       ),
       body: Column(
@@ -38,7 +41,9 @@ class _InventoryScreenState extends State<InventoryScreen> with FirebaseInitMixi
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => InventoryListScreen()),
+                      MaterialPageRoute(
+                        builder: (context) => InventoryListScreen(),
+                      ),
                     );
                   },
                   icon: Icon(Icons.list),
@@ -51,7 +56,9 @@ class _InventoryScreenState extends State<InventoryScreen> with FirebaseInitMixi
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => AddBloodUnitForm()),
+                      MaterialPageRoute(
+                        builder: (context) => AddBloodUnitForm(),
+                      ),
                     );
                   },
                   icon: Icon(Icons.add),
@@ -87,7 +94,9 @@ class _InventoryScreenState extends State<InventoryScreen> with FirebaseInitMixi
                           children: [
                             Text('Total Units: ${inventoryItem.totalUnits}'),
                             Text('Oldest Unit: ${inventoryItem.oldestUnit}'),
-                            Text('Expiry Date: ${inventoryItem.latestExpiryDate}'),
+                            Text(
+                              'Expiry Date: ${inventoryItem.latestExpiryDate}',
+                            ),
                           ],
                         ),
                       ),
