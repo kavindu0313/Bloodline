@@ -156,7 +156,9 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
                     ),
                     SizedBox(height: 16),
 
-                    // Location
+                    // Location 
+                    // Campaign Location
+                    // This field allows the user to enter the location of the campaign.
                     TextFormField(
                       controller: _locationController,
                       decoration: InputDecoration(
