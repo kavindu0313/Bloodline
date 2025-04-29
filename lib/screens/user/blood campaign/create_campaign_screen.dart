@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../../controller/blood_campaign_controller.dart';
 import '../../../models/blood_campaign_model.dart';
 import '../../../services/blood_campaign_service.dart';
-
+//CreateCampaignScreen
 class CreateCampaignScreen extends StatefulWidget {
   const CreateCampaignScreen({super.key});
 
@@ -52,6 +52,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
       });
 
       try {
+        // Create a new BloodCampaign object
         final campaign = BloodCampaign(
           id: '', // ID will be assigned by Firestore
           title: _titleController.text,
@@ -60,7 +61,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
           location: _locationController.text,
           status: 'active',
         );
-
+        //if Campaign created successfully
         await _service.createCampaign(campaign);
         Get.back(result: true);
         Get.snackbar(
@@ -69,6 +70,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
           snackPosition: SnackPosition.BOTTOM,
         );
       } catch (e) {
+        // Handle error
         Get.snackbar(
           'Error',
           'Failed to create campaign',
@@ -81,7 +83,10 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
       }
     }
   }
-
+ /// Build the UI
+  /// This method builds the UI for the Create Campaign screen.
+  /// It includes a form with fields for the campaign title, description, date, and location.
+  /// It also includes a button to submit the form and create the campaign.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,6 +104,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     // Title
+                    // Campaign Title
                     TextFormField(
                       controller: _titleController,
                       decoration: InputDecoration(
@@ -115,7 +121,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
                     ),
                     SizedBox(height: 16),
 
-                    // Description
+                    // Description.
                     TextFormField(
                       controller: _descriptionController,
                       decoration: InputDecoration(
@@ -134,6 +140,8 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
                     SizedBox(height: 16),
 
                     // Date
+                    // Campaign Date
+                    // This field allows the user to select a date for the campaign.
                     InkWell(
                       onTap: () => _selectDate(context),
                       child: InputDecorator(
@@ -148,7 +156,9 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
                     ),
                     SizedBox(height: 16),
 
-                    // Location
+                    // Location 
+                    // Campaign Location
+                    // This field allows the user to enter the location of the campaign.
                     TextFormField(
                       controller: _locationController,
                       decoration: InputDecoration(
@@ -166,6 +176,8 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
                     SizedBox(height: 24),
 
                     // Submit Button
+                    // This button submits the form and creates the campaign.
+                    // It is disabled while the form is being submitted.
                     ElevatedButton(
                       onPressed: _submitForm,
                       child: Padding(

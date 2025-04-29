@@ -18,6 +18,7 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
   bool _isLoading = false;
 
   // Form controllers
+  /// TextEditingController for each field
   late TextEditingController _titleController;
   late TextEditingController _descriptionController;
   late TextEditingController _locationController;
@@ -41,7 +42,8 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
     _locationController.dispose();
     super.dispose();
   }
-
+/// Function to select a date
+  /// This function opens a date picker dialog and updates the selected date.
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -55,7 +57,8 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
       });
     }
   }
-
+/// Function to submit the form
+  /// This function validates the form, updates the campaign, and shows a success or error message.
   Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
       setState(() {
@@ -94,6 +97,8 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
   }
 
   @override
+  // Build method to build the UI of the screen
+  /// This method builds the UI for the Edit Campaign screen.
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -101,6 +106,8 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
         centerTitle: true,
       ),
       body: _isLoading
+      // Loading indicator
+          // If the form is loading, show a loading indicator
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
               padding: EdgeInsets.all(16.0),
