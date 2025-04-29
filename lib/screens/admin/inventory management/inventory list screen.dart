@@ -8,6 +8,7 @@ import '../../../mixins/firebase_init_mixin.dart';
 import '../../../services/firebase_inventory_service.dart';
 import '../../../models/blood_unit.dart';
 
+//inventory list screen class
 class InventoryListScreen extends StatefulWidget {
   const InventoryListScreen({super.key});
 
@@ -15,19 +16,22 @@ class InventoryListScreen extends StatefulWidget {
   _InventoryListScreenState createState() => _InventoryListScreenState();
 }
 
-class _InventoryListScreenState extends State<InventoryListScreen> with FirebaseInitMixin {
+class _InventoryListScreenState extends State<InventoryListScreen>
+    with FirebaseInitMixin {
   final FirebaseInventoryService _inventoryService = FirebaseInventoryService();
-  
+
   // Regular expression for validation
   final RegExp _donorIdRegExp = RegExp(r'^\d+$');
 
   // Method to show update dialog
   void _showUpdateDialog(BloodUnit unit) {
-    final volumeController = TextEditingController(text: unit.volume.toString());
+    final volumeController = TextEditingController(
+      text: unit.volume.toString(),
+    );
     final donorIdController = TextEditingController(text: unit.donorId);
     String selectedStatus = unit.status ?? 'Available';
     String? donorIdError;
-
+    //show dialog method
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -62,16 +66,22 @@ class _InventoryListScreenState extends State<InventoryListScreen> with Firebase
                       keyboardType: TextInputType.number,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       onChanged: (value) {
-                        if (value.isNotEmpty && !_donorIdRegExp.hasMatch(value)) {
-                          donorIdController.text = value.replaceAll(RegExp(r'[^\d]'), '');
-                          donorIdController.selection = TextSelection.fromPosition(
+                        if (value.isNotEmpty &&
+                            !_donorIdRegExp.hasMatch(value)) {
+                          donorIdController.text = value.replaceAll(
+                            RegExp(r'[^\d]'),
+                            '',
+                          );
+                          donorIdController
+                              .selection = TextSelection.fromPosition(
                             TextPosition(offset: donorIdController.text.length),
                           );
                         }
                         setState(() {
-                          donorIdError = value.isEmpty
-                              ? 'Please enter donor ID'
-                              : !_donorIdRegExp.hasMatch(value)
+                          donorIdError =
+                              value.isEmpty
+                                  ? 'Please enter donor ID'
+                                  : !_donorIdRegExp.hasMatch(value)
                                   ? 'Please enter only numbers'
                                   : null;
                         });
@@ -84,12 +94,15 @@ class _InventoryListScreenState extends State<InventoryListScreen> with Firebase
                         labelText: 'Status',
                         border: OutlineInputBorder(),
                       ),
-                      items: ['Available', 'Reserved', 'Expired']
-                          .map((status) => DropdownMenuItem(
-                                value: status,
-                                child: Text(status),
-                              ))
-                          .toList(),
+                      items:
+                          ['Available', 'Reserved', 'Expired']
+                              .map(
+                                (status) => DropdownMenuItem(
+                                  value: status,
+                                  child: Text(status),
+                                ),
+                              )
+                              .toList(),
                       onChanged: (value) {
                         selectedStatus = value!;
                       },
@@ -106,11 +119,13 @@ class _InventoryListScreenState extends State<InventoryListScreen> with Firebase
                   child: Text('Update'),
                   onPressed: () async {
                     // Validate input before updating
-                    if (donorIdController.text.isEmpty || !_donorIdRegExp.hasMatch(donorIdController.text)) {
+                    if (donorIdController.text.isEmpty ||
+                        !_donorIdRegExp.hasMatch(donorIdController.text)) {
                       setState(() {
-                        donorIdError = donorIdController.text.isEmpty
-                            ? 'Please enter donor ID'
-                            : 'Please enter only numbers';
+                        donorIdError =
+                            donorIdController.text.isEmpty
+                                ? 'Please enter donor ID'
+                                : 'Please enter only numbers';
                       });
                       return;
                     }
@@ -176,16 +191,26 @@ class _InventoryListScreenState extends State<InventoryListScreen> with Firebase
   Future<void> _generateCSVReport(List<BloodUnit> units) async {
     // Create CSV data
     List<List<dynamic>> csvData = [
-      ['ID', 'Blood Type', 'Volume', 'Donation Date', 'Expiry Date', 'Donor ID', 'Status'],
-      ...units.map((unit) => [
-        unit.id,
-        unit.bloodType,
-        unit.volume,
-        DateFormat('yyyy-MM-dd').format(unit.donationDate),
-        DateFormat('yyyy-MM-dd').format(unit.expiryDate),
-        unit.donorId,
-        unit.status ?? 'Available'
-      ])
+      [
+        'ID',
+        'Blood Type',
+        'Volume',
+        'Donation Date',
+        'Expiry Date',
+        'Donor ID',
+        'Status',
+      ],
+      ...units.map(
+        (unit) => [
+          unit.id,
+          unit.bloodType,
+          unit.volume,
+          DateFormat('yyyy-MM-dd').format(unit.donationDate),
+          DateFormat('yyyy-MM-dd').format(unit.expiryDate),
+          unit.donorId,
+          unit.status ?? 'Available',
+        ],
+      ),
     ];
 
     // Convert to CSV string
@@ -199,11 +224,12 @@ class _InventoryListScreenState extends State<InventoryListScreen> with Firebase
     await file.writeAsString(csv);
 
     // Show success dialog
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Report generated: ${file.path}')),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text('Report generated: ${file.path}')));
   }
 
+  //build method
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -255,8 +281,12 @@ class _InventoryListScreenState extends State<InventoryListScreen> with Firebase
                     children: [
                       Text('Donor ID: ${unit.donorId}'),
                       Text('Status: ${unit.status ?? 'Available'}'),
-                      Text('Donation Date: ${DateFormat('yyyy-MM-dd').format(unit.donationDate)}'),
-                      Text('Expiry Date: ${DateFormat('yyyy-MM-dd').format(unit.expiryDate)}'),
+                      Text(
+                        'Donation Date: ${DateFormat('yyyy-MM-dd').format(unit.donationDate)}',
+                      ),
+                      Text(
+                        'Expiry Date: ${DateFormat('yyyy-MM-dd').format(unit.expiryDate)}',
+                      ),
                     ],
                   ),
                   trailing: Row(
