@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+//blood inventory model class
 class BloodInventoryModel {
   final String hospitalId;
   final Map<String, BloodTypeInventory> inventory;
