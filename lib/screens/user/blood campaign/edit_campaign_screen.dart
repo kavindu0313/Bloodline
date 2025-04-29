@@ -57,7 +57,8 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
       });
     }
   }
-
+/// Function to submit the form
+  /// This function validates the form, updates the campaign, and shows a success or error message.
   Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
       setState(() {
