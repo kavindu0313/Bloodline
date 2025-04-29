@@ -97,6 +97,8 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
   }
 
   @override
+  // Build method to build the UI of the screen
+  /// This method builds the UI for the Edit Campaign screen.
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
