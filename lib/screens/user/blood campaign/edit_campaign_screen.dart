@@ -106,6 +106,8 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
         centerTitle: true,
       ),
       body: _isLoading
+      // Loading indicator
+          // If the form is loading, show a loading indicator
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
               padding: EdgeInsets.all(16.0),
