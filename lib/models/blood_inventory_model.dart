@@ -51,7 +51,7 @@ class BloodTypeInventory {
       expiryDate: (json['expiryDate'] as Timestamp).toDate(),
     );
   }
-
+  //to json method
   Map<String, dynamic> toJson() {
     return {
       'availableUnits': availableUnits,
