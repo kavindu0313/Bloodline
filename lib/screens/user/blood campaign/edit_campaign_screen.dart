@@ -42,7 +42,8 @@ class _EditCampaignScreenState extends State<EditCampaignScreen> {
     _locationController.dispose();
     super.dispose();
   }
-
+/// Function to select a date
+  /// This function opens a date picker dialog and updates the selected date.
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
